@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 
-const BASE_URL = 'https://cognote-website.vercel.app'
+const BASE_URL = 'https://cognote-ai.com'
 
 export default function robots(): MetadataRoute.Robots {
   return {

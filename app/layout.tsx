@@ -7,7 +7,7 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
-const BASE_URL = 'https://cognote-website.vercel.app'
+const BASE_URL = 'https://cognote-ai.com'
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

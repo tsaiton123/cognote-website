@@ -1,4 +1,4 @@
-const BASE_URL = 'https://cognote-website.vercel.app'
+const BASE_URL = 'https://cognote-ai.com'
 const APP_STORE_URL = 'https://apps.apple.com/us/app/cognote-ai/id6757509618'
 
 const appSchema = {

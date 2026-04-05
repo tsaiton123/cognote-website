@@ -6,7 +6,7 @@ import JsonLd from '@/components/JsonLd'
 
 export const metadata: Metadata = {
   title: 'Cognote — AI Note-Taking App for Students',
-  alternates: { canonical: 'https://cognote-website.vercel.app' },
+  alternates: { canonical: 'https://cognote-ai.com' },
 }
 
 const FAQS = [

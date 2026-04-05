@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
-  alternates: { canonical: 'https://cognote-website.vercel.app/privacy' },
+  alternates: { canonical: 'https://cognote-ai.com/privacy' },
 }
 
 export default function PrivacyPolicy() {

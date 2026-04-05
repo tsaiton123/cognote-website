@@ -1,6 +1,36 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import Hero from '@/components/Hero'
 import FeatureSection from '@/components/FeatureSection'
+import JsonLd from '@/components/JsonLd'
+
+export const metadata: Metadata = {
+  title: 'Cognote — AI Note-Taking App for Students',
+  alternates: { canonical: 'https://cognote-website.vercel.app' },
+}
+
+const FAQS = [
+  {
+    q: 'How does Cognote handwriting search work?',
+    a: 'Cognote uses on-device OCR to index everything you write. Just type a keyword and it instantly finds matching handwritten notes — no scanning or manual tagging needed.',
+  },
+  {
+    q: 'Can Cognote convert whiteboard photos into notes?',
+    a: 'Yes. The Board to Note feature lets you photograph any whiteboard or chalkboard and converts it into a clean, searchable digital note.',
+  },
+  {
+    q: 'What AI features does Cognote have?',
+    a: 'Cognote uses Google Gemini AI to let you ask questions about your notes, get explanations, solve problems, and more — all in context with what you wrote.',
+  },
+  {
+    q: 'Is Cognote free?',
+    a: 'Cognote has a free tier that lets you create up to 3 notes. Paid plans unlock unlimited notes, AI features, and cloud sync.',
+  },
+  {
+    q: 'Does Cognote work offline?',
+    a: 'Yes. Notes and handwriting search work fully offline. AI features require an internet connection.',
+  },
+]
 
 const FEATURES = [
   {
@@ -32,6 +62,7 @@ const FEATURES = [
 export default function Home() {
   return (
     <main className="bg-black text-white">
+      <JsonLd />
       <Hero />
 
       {/* Feature anchor */}
@@ -83,6 +114,25 @@ export default function Home() {
           </svg>
           Download on the App Store
         </a>
+      </section>
+
+      {/* FAQ */}
+      <section
+        className="max-w-3xl mx-auto px-6 md:px-0 py-24"
+        style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}
+      >
+        <p className="text-sm font-mono uppercase tracking-widest mb-4 text-center" style={{ color: 'rgba(46,111,212,0.8)' }}>
+          FAQ
+        </p>
+        <h2 className="text-4xl font-bold text-white text-center mb-14">Common questions</h2>
+        <div className="space-y-6">
+          {FAQS.map((faq, i) => (
+            <div key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.07)', paddingBottom: '1.5rem' }}>
+              <h3 className="text-lg font-semibold text-white mb-2">{faq.q}</h3>
+              <p className="text-gray-400 leading-relaxed">{faq.a}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* Footer */}

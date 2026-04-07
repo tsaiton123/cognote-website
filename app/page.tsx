@@ -4,6 +4,7 @@ import Hero from '@/components/Hero'
 import FeatureSection from '@/components/FeatureSection'
 import JsonLd from '@/components/JsonLd'
 import AppStoreButton from '@/components/AppStoreButton'
+import BlogSection from '@/components/BlogSection'
 
 export const metadata: Metadata = {
   title: 'Cognote — AI Note-Taking App for Students',
@@ -110,6 +111,9 @@ export default function Home() {
           }}
         />
       </section>
+
+      {/* Blog */}
+      <BlogSection />
 
       {/* FAQ */}
       <section

@@ -1,73 +1,48 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
 import Hero from '@/components/Hero'
 import FeatureSection from '@/components/FeatureSection'
 import JsonLd from '@/components/JsonLd'
 import AppStoreButton from '@/components/AppStoreButton'
 import BlogSection from '@/components/BlogSection'
 
-export const metadata: Metadata = {
-  title: 'Cognote — AI Note-Taking App for Students',
-  alternates: { canonical: 'https://cognote-ai.com' },
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'metadata' })
+  return {
+    title: t('title'),
+    alternates: { canonical: `https://cognote-ai.com/${locale}` },
+  }
 }
 
-const FAQS = [
-  {
-    q: 'How does Cognote handwriting search work?',
-    a: 'Cognote uses on-device OCR to index everything you write. Just type a keyword and it instantly finds matching handwritten notes — no scanning or manual tagging needed.',
-  },
-  {
-    q: 'Can Cognote convert whiteboard photos into notes?',
-    a: 'Yes. The Board to Note feature lets you photograph any whiteboard or chalkboard and converts it into a clean, searchable digital note.',
-  },
-  {
-    q: 'What AI features does Cognote have?',
-    a: 'Cognote uses Google Gemini AI to let you ask questions about your notes, get explanations, solve problems, and more — all in context with what you wrote.',
-  },
-  {
-    q: 'Is Cognote free?',
-    a: 'Cognote has a free tier that lets you create up to 3 notes. Paid plans unlock unlimited notes, AI features, and cloud sync.',
-  },
-  {
-    q: 'Does Cognote work offline?',
-    a: 'Yes. Notes and handwriting search work fully offline. AI features require an internet connection.',
-  },
-]
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
+  const t = await getTranslations({ locale })
 
-const FEATURES = [
-  {
-    title: 'Find any word\nyou ever wrote.',
-    subtitle: 'Handwriting Search',
-    description:
-      'Type a keyword and Cognote instantly searches through all your handwritten notes — no scanning, no manual tagging. It just works.',
-    videoSrc: '/videos/handwriting-search.mp4',
-    align: 'left' as const,
-  },
-  {
-    title: 'Turn your board\ninto clean notes.',
-    subtitle: 'Board to Note',
-    description:
-      'Photograph a whiteboard or chalkboard and Cognote converts it into a structured, searchable note. Never lose a lecture again.',
-    videoSrc: '/videos/board-to-note.mp4',
-    align: 'right' as const,
-  },
-  {
-    title: 'Ask anything\nabout your notes.',
-    subtitle: 'Ask AI',
-    description:
-      "Stuck on a concept? Ask AI to explain, solve, or expand on what you've written. It reads your notes and answers in context.",
-    videoSrc: '/videos/ask-ai.mp4',
-    align: 'left' as const,
-  },
-]
+  const FEATURES = [0, 1, 2].map((i) => ({
+    title: t(`features.${i}.title`),
+    subtitle: t(`features.${i}.subtitle`),
+    description: t(`features.${i}.description`),
+    videoSrc: ['/videos/handwriting-search.mp4', '/videos/board-to-note.mp4', '/videos/ask-ai.mp4'][i],
+    align: ['left', 'right', 'left'][i] as 'left' | 'right',
+  }))
 
-export default function Home() {
+  const FAQS: { q: string; a: string }[] = t.raw('faq.items')
+
   return (
     <main className="bg-black text-white">
       <JsonLd />
       <Hero />
 
-      {/* Feature anchor */}
       <div id="features" />
 
       {FEATURES.map((feature, i) => (
@@ -95,13 +70,13 @@ export default function Home() {
           }}
         />
         <p className="text-sm font-mono uppercase tracking-widest" style={{ color: 'rgba(212,96,26,0.8)' }}>
-          Get started
+          {t('cta.eyebrow')}
         </p>
         <h2 className="mt-4 text-5xl md:text-6xl font-bold text-white max-w-xl leading-tight">
-          Ready for your edge?
+          {t('cta.headline')}
         </h2>
         <p className="mt-5 text-lg text-gray-400 max-w-md">
-          Join thousands of students who study smarter with Cognote.
+          {t('cta.subheadline')}
         </p>
         <AppStoreButton
           className="mt-10 inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold text-white transition-all hover:scale-105"
@@ -121,9 +96,9 @@ export default function Home() {
         style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}
       >
         <p className="text-sm font-mono uppercase tracking-widest mb-4 text-center" style={{ color: 'rgba(46,111,212,0.8)' }}>
-          FAQ
+          {t('faq.eyebrow')}
         </p>
-        <h2 className="text-4xl font-bold text-white text-center mb-14">Common questions</h2>
+        <h2 className="text-4xl font-bold text-white text-center mb-14">{t('faq.headline')}</h2>
         <div className="space-y-6">
           {FAQS.map((faq, i) => (
             <div key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.07)', paddingBottom: '1.5rem' }}>
@@ -139,10 +114,10 @@ export default function Home() {
         className="flex flex-col md:flex-row items-center justify-between px-8 md:px-16 py-8 text-sm"
         style={{ borderTop: '1px solid rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.25)' }}
       >
-        <span>© {new Date().getFullYear()} Cognote. All rights reserved.</span>
+        <span>{t('footer.copyright', { year: new Date().getFullYear() })}</span>
         <div className="flex gap-6 mt-4 md:mt-0">
-          <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-          <a href="mailto:support@cognote.app" className="hover:text-white transition-colors">Support</a>
+          <Link href="/privacy" className="hover:text-white transition-colors">{t('footer.privacy')}</Link>
+          <a href="mailto:support@cognote.app" className="hover:text-white transition-colors">{t('footer.support')}</a>
         </div>
       </footer>
     </main>

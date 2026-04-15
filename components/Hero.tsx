@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 // Fixed star positions to avoid hydration mismatch
 const STARS = [
   { x: 4,  y: 6  }, { x: 91, y: 10 }, { x: 18, y: 22 }, { x: 76, y: 5  },
@@ -10,6 +12,8 @@ const STARS = [
 ]
 
 export default function Hero() {
+  const t = useTranslations('hero')
+
   return (
     <section className="relative w-full h-screen bg-black overflow-hidden flex flex-col">
 
@@ -25,12 +29,15 @@ export default function Hero() {
       {/* Headline */}
       <div className="relative z-30 flex flex-col items-center text-center pt-16 px-6 md:px-12 pointer-events-none select-none">
         <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.08] tracking-tight max-w-4xl">
-          Your secret{' '}
-          <em className="not-italic" style={{ color: '#D4601A' }}>edge</em>
-          {' '}over<br />your classmates.
+          {t.rich('headline', {
+            highlight: (chunks) => (
+              <em className="not-italic" style={{ color: '#D4601A' }}>{chunks}</em>
+            ),
+            br: () => <br />,
+          })}
         </h1>
         <p className="mt-5 text-lg md:text-xl text-gray-400 max-w-xl leading-relaxed">
-          Handwrite freely. Search everything. Ask AI anything.
+          {t('subheadline')}
         </p>
         <a
           href="#features"
@@ -41,7 +48,7 @@ export default function Hero() {
             color: '#E8722A',
           }}
         >
-          See how it works
+          {t('cta')}
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
             <path d="M7 2L7 12M7 12L3 8M7 12L11 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>

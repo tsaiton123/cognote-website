@@ -1,0 +1,101 @@
+{
+  "metadata": {
+    "title": "Cognote — 學生的 AI 筆記應用程式",
+    "description": "Cognote 是 AI 驅動的筆記應用程式，讓你搜尋手寫筆記、將白板轉換為筆記，並就你寫的任何內容詢問 AI。你在班上同學中的秘密優勢。"
+  },
+  "hero": {
+    "headline": "你在班上的秘密<highlight>優勢</highlight>。",
+    "subheadline": "自由手寫。搜尋一切。問 AI 任何問題。",
+    "cta": "了解使用方式"
+  },
+  "features": {
+    "0": {
+      "subtitle": "手寫搜尋",
+      "title": "找到你曾經\n寫下的每個字。",
+      "description": "輸入關鍵字，Cognote 立即搜尋所有手寫筆記——無需掃描，無需手動標記。就是這麼簡單。"
+    },
+    "1": {
+      "subtitle": "板書轉筆記",
+      "title": "把黑板變成\n整潔的筆記。",
+      "description": "拍下白板或黑板，Cognote 將其轉換為結構化、可搜尋的筆記。再也不怕錯過課堂內容。"
+    },
+    "2": {
+      "subtitle": "詢問 AI",
+      "title": "問 AI 任何關於\n你筆記的問題。",
+      "description": "卡在某個概念？讓 AI 解釋、解題，或延伸你所寫的內容。它會閱讀你的筆記並根據情境回答。"
+    }
+  },
+  "cta": {
+    "eyebrow": "立即開始",
+    "headline": "準備好你的優勢了嗎？",
+    "subheadline": "加入數千名使用 Cognote 聰明學習的學生。"
+  },
+  "blog": {
+    "eyebrow": "部落格",
+    "headline": "最新文章",
+    "viewAll": "查看全部 →",
+    "readMore": "閱讀更多 →"
+  },
+  "faq": {
+    "eyebrow": "常見問題",
+    "headline": "常見問題",
+    "items": [
+      {
+        "q": "Cognote 的手寫搜尋如何運作？",
+        "a": "Cognote 使用裝置端 OCR 為你寫下的所有內容建立索引。只需輸入關鍵字，即可立即找到符合的手寫筆記——無需掃描或手動標記。"
+      },
+      {
+        "q": "Cognote 可以將白板照片轉換為筆記嗎？",
+        "a": "可以。板書轉筆記功能讓你拍攝任何白板或黑板，並將其轉換為整潔、可搜尋的數位筆記。"
+      },
+      {
+        "q": "Cognote 有哪些 AI 功能？",
+        "a": "Cognote 使用 Google Gemini AI，讓你就筆記提問、獲得解釋、解決問題等——所有回答都結合你所寫的內容。"
+      },
+      {
+        "q": "Cognote 是免費的嗎？",
+        "a": "Cognote 提供免費方案，可建立最多 3 則筆記。付費方案解鎖無限筆記、AI 功能及雲端同步。"
+      },
+      {
+        "q": "Cognote 可以離線使用嗎？",
+        "a": "可以。筆記和手寫搜尋完全支援離線使用。AI 功能需要網路連線。"
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "© {year} Cognote. 版權所有。",
+    "privacy": "隱私政策",
+    "support": "客服支援"
+  },
+  "nav": {
+    "back": "返回",
+    "backToCognote": "返回 Cognote",
+    "allArticles": "所有文章"
+  },
+  "appStore": {
+    "download": "在 App Store 上下載"
+  },
+  "blogPage": {
+    "eyebrow": "部落格",
+    "headline": "所有文章",
+    "readMore": "閱讀更多 →"
+  },
+  "privacy": {
+    "eyebrow": "法律聲明",
+    "headline": "隱私政策",
+    "lastUpdated": "最後更新：2025 年 4 月",
+    "s1Title": "你的資料儲存在裝置上",
+    "s1": "你的筆記和繪圖儲存在本地裝置上，未經你的明確同意，絕不會上傳至我們的伺服器。",
+    "s2Title": "AI 功能",
+    "s2": "當你使用 AI 功能時，所選內容會安全傳輸至 Google 的 Gemini API 進行處理，回應生成後不會保留。",
+    "s3Title": "我們不出售你的資料",
+    "s3": "我們不出售、分享或從你的個人資料或筆記內容中獲利。",
+    "s4Title": "付款",
+    "s4": "訂閱和付款資訊通過 Apple App Store 安全處理，Cognote 不會直接存取或儲存。",
+    "s5Title": "分析",
+    "s5": "我們收集最少量的匿名分析數據，僅用於改善應用程式效能和用戶體驗。",
+    "s6Title": "兒童隱私",
+    "s6": "13 歲以下的用戶，依據 COPPA 法規，需要家長同意。",
+    "agreement": "使用 Cognote 即表示你同意這些條款。"
+  }
+}

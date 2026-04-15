@@ -1,15 +1,10 @@
 import Link from 'next/link'
+import { useTranslations, useFormatter } from 'next-intl'
 import { getLatestPosts } from '@/lib/posts'
 
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  })
-}
-
 export default function BlogSection() {
+  const t = useTranslations('blog')
+  const format = useFormatter()
   const posts = getLatestPosts(3)
 
   return (
@@ -24,16 +19,16 @@ export default function BlogSection() {
             className="text-sm font-mono uppercase tracking-widest mb-3"
             style={{ color: 'rgba(212,96,26,0.8)' }}
           >
-            Blog
+            {t('eyebrow')}
           </p>
-          <h2 className="text-4xl font-bold text-white">Latest articles</h2>
+          <h2 className="text-4xl font-bold text-white">{t('headline')}</h2>
         </div>
         <Link
           href="/blog"
           className="text-sm font-medium transition-colors"
           style={{ color: 'rgba(212,96,26,0.8)' }}
         >
-          View all →
+          {t('viewAll')}
         </Link>
       </div>
 
@@ -53,7 +48,7 @@ export default function BlogSection() {
               className="text-xs font-mono uppercase tracking-widest mb-4"
               style={{ color: 'rgba(255,255,255,0.3)' }}
             >
-              {formatDate(post.date)}
+              {format.dateTime(new Date(post.date), { month: 'long', day: 'numeric', year: 'numeric' })}
             </time>
             <h3
               className="text-lg font-semibold text-white leading-snug mb-3 group-hover:text-orange-400 transition-colors"
@@ -67,7 +62,7 @@ export default function BlogSection() {
               className="mt-5 text-sm font-medium transition-colors"
               style={{ color: 'rgba(212,96,26,0.7)' }}
             >
-              Read more →
+              {t('readMore')}
             </span>
           </Link>
         ))}

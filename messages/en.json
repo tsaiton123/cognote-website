@@ -1,0 +1,101 @@
+{
+  "metadata": {
+    "title": "Cognote — AI Note-Taking App for Students",
+    "description": "Cognote is the AI-powered note-taking app that lets you search your handwriting, convert whiteboards into notes, and ask AI about anything you wrote. Your secret edge over your classmates."
+  },
+  "hero": {
+    "headline": "Your secret <highlight>edge</highlight> over<br/>your classmates.",
+    "subheadline": "Handwrite freely. Search everything. Ask AI anything.",
+    "cta": "See how it works"
+  },
+  "features": {
+    "0": {
+      "subtitle": "Handwriting Search",
+      "title": "Find any word\nyou ever wrote.",
+      "description": "Type a keyword and Cognote instantly searches through all your handwritten notes — no scanning, no manual tagging. It just works."
+    },
+    "1": {
+      "subtitle": "Board to Note",
+      "title": "Turn your board\ninto clean notes.",
+      "description": "Photograph a whiteboard or chalkboard and Cognote converts it into a structured, searchable note. Never lose a lecture again."
+    },
+    "2": {
+      "subtitle": "Ask AI",
+      "title": "Ask anything\nabout your notes.",
+      "description": "Stuck on a concept? Ask AI to explain, solve, or expand on what you've written. It reads your notes and answers in context."
+    }
+  },
+  "cta": {
+    "eyebrow": "Get started",
+    "headline": "Ready for your edge?",
+    "subheadline": "Join thousands of students who study smarter with Cognote."
+  },
+  "blog": {
+    "eyebrow": "Blog",
+    "headline": "Latest articles",
+    "viewAll": "View all →",
+    "readMore": "Read more →"
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "headline": "Common questions",
+    "items": [
+      {
+        "q": "How does Cognote handwriting search work?",
+        "a": "Cognote uses on-device OCR to index everything you write. Just type a keyword and it instantly finds matching handwritten notes — no scanning or manual tagging needed."
+      },
+      {
+        "q": "Can Cognote convert whiteboard photos into notes?",
+        "a": "Yes. The Board to Note feature lets you photograph any whiteboard or chalkboard and converts it into a clean, searchable digital note."
+      },
+      {
+        "q": "What AI features does Cognote have?",
+        "a": "Cognote uses Google Gemini AI to let you ask questions about your notes, get explanations, solve problems, and more — all in context with what you wrote."
+      },
+      {
+        "q": "Is Cognote free?",
+        "a": "Cognote has a free tier that lets you create up to 3 notes. Paid plans unlock unlimited notes, AI features, and cloud sync."
+      },
+      {
+        "q": "Does Cognote work offline?",
+        "a": "Yes. Notes and handwriting search work fully offline. AI features require an internet connection."
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "© {year} Cognote. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "support": "Support"
+  },
+  "nav": {
+    "back": "Back",
+    "backToCognote": "Back to Cognote",
+    "allArticles": "All articles"
+  },
+  "appStore": {
+    "download": "Download on the App Store"
+  },
+  "blogPage": {
+    "eyebrow": "Blog",
+    "headline": "All articles",
+    "readMore": "Read more →"
+  },
+  "privacy": {
+    "eyebrow": "Legal",
+    "headline": "Privacy Policy",
+    "lastUpdated": "Last updated: April 2025",
+    "s1Title": "Your Data Stays on Your Device",
+    "s1": "Your notes and drawings are stored locally on your device and are never uploaded to our servers without your explicit consent.",
+    "s2Title": "AI Features",
+    "s2": "When you use AI features, selected content is securely transmitted to Google's Gemini API for processing and is not retained after the response is generated.",
+    "s3Title": "We Don't Sell Your Data",
+    "s3": "We do not sell, share, or monetize your personal data or note content.",
+    "s4Title": "Payments",
+    "s4": "Subscription and payment information is handled securely through Apple's App Store and is never accessed or stored by Cognote directly.",
+    "s5Title": "Analytics",
+    "s5": "We collect minimal anonymous analytics solely to improve app performance and user experience.",
+    "s6Title": "Children's Privacy",
+    "s6": "For users under 13, parental consent is required as per COPPA regulations.",
+    "agreement": "By using Cognote, you agree to these terms."
+  }
+}

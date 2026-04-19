@@ -1,0 +1,17 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="moonGradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(196 188) rotate(46.3972) scale(236.608)">
+      <stop offset="0" stop-color="#7EB8F7"/>
+      <stop offset="0.45" stop-color="#2E6FD4"/>
+      <stop offset="1" stop-color="#0A2E6B"/>
+    </radialGradient>
+    <filter id="moonGlow" x="32" y="32" width="448" height="448" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="22" result="effect1_foregroundBlur_0_1"/>
+    </filter>
+  </defs>
+  <g filter="url(#moonGlow)">
+    <circle cx="256" cy="256" r="148" fill="url(#moonGradient)"/>
+  </g>
+</svg>

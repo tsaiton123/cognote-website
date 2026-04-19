@@ -4,7 +4,7 @@
     "description": "Cognote is the AI-powered note-taking app that lets you search your handwriting, convert whiteboards into notes, and ask AI about anything you wrote. Your secret edge over your classmates."
   },
   "hero": {
-    "headline": "Your secret <highlight>edge</highlight> over<br/>your classmates.",
+    "headline": "Your secret <highlight>edge</highlight> over<br></br>your classmates.",
     "subheadline": "Handwrite freely. Search everything. Ask AI anything.",
     "cta": "See how it works"
   },

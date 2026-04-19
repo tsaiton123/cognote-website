@@ -1,77 +1,89 @@
-const BASE_URL = 'https://cognote-ai.com'
+import { BASE_URL } from '@/lib/seo'
+
+interface FaqItem {
+  q: string
+  a: string
+}
+
 const APP_STORE_URL = 'https://apps.apple.com/us/app/cognote-ai/id6757509618'
 
-const appSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'MobileApplication',
-  name: 'Cognote',
-  operatingSystem: 'iOS',
-  applicationCategory: 'EducationApplication',
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'USD',
-  },
-  url: APP_STORE_URL,
-  description:
-    'AI-powered note-taking app for students. Search handwritten notes instantly, convert whiteboards to structured notes, and ask AI about your content.',
-  author: {
+export default function JsonLd({
+  locale,
+  description,
+  faqs,
+}: {
+  locale: string
+  description: string
+  faqs: FaqItem[]
+}) {
+  const organizationSchema = {
+    '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Cognote',
     url: BASE_URL,
-  },
-}
+    email: 'support@cognote.app',
+    sameAs: [APP_STORE_URL],
+  }
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'How does Cognote handwriting search work?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Cognote uses on-device OCR to index everything you write. Just type a keyword and it instantly finds matching handwritten notes — no scanning or manual tagging needed.',
-      },
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Cognote',
+    url: BASE_URL,
+    inLanguage: locale,
+    description,
+    publisher: {
+      '@type': 'Organization',
+      name: 'Cognote',
+      url: BASE_URL,
     },
-    {
-      '@type': 'Question',
-      name: 'Can Cognote convert whiteboard photos into notes?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes. The Board to Note feature lets you photograph any whiteboard or chalkboard and converts it into a clean, searchable digital note.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What AI features does Cognote have?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Cognote uses Google Gemini AI to let you ask questions about your notes, get explanations, solve problems, and more — all in context with what you wrote.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Is Cognote free?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Cognote has a free tier that lets you create up to 3 notes. Paid plans (Basic and Pro) unlock unlimited notes, AI features, and cloud sync.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Does Cognote work offline?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes. Notes and handwriting search work fully offline. AI features require an internet connection.',
-      },
-    },
-  ],
-}
+  }
 
-export default function JsonLd() {
+  const appSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'MobileApplication',
+    name: 'Cognote',
+    operatingSystem: 'iOS',
+    applicationCategory: 'EducationApplication',
+    url: APP_STORE_URL,
+    inLanguage: locale,
+    description,
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    author: {
+      '@type': 'Organization',
+      name: 'Cognote',
+      url: BASE_URL,
+    },
+  }
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    inLanguage: locale,
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.a,
+      },
+    })),
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(appSchema) }}

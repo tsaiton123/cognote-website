@@ -9,7 +9,7 @@ export function getLocalizedUrl(locale: string, path = ''): string {
 
 export function getLanguageAlternates(path = ''): Record<string, string> {
   return {
-    'x-default': BASE_URL,
+    'x-default': path ? getLocalizedUrl(routing.defaultLocale, path) : BASE_URL,
     ...Object.fromEntries(
       routing.locales.map((locale) => [locale, getLocalizedUrl(locale, path)])
     ),

@@ -78,6 +78,7 @@
   "blogPage": {
     "eyebrow": "Blog",
     "headline": "All articles",
+    "description": "Study tips, feature guides, and product updates from the Cognote team.",
     "readMore": "Read more →"
   },
   "privacy": {

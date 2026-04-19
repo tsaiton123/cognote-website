@@ -1,11 +1,12 @@
 import Link from 'next/link'
-import { useTranslations, useFormatter } from 'next-intl'
+import { useTranslations, useFormatter, useLocale } from 'next-intl'
 import { getLatestPosts } from '@/lib/posts'
 
 export default function BlogSection() {
   const t = useTranslations('blog')
   const format = useFormatter()
-  const posts = getLatestPosts(3)
+  const locale = useLocale() as 'en' | 'zh-TW'
+  const posts = getLatestPosts(locale, 3)
 
   return (
     <section

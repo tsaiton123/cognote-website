@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { useFormatter } from 'next-intl'
-import { posts } from '@/lib/posts'
+import { getAllPosts, type Locale } from '@/lib/posts'
 import { getLanguageAlternates, getLocalizedUrl } from '@/lib/seo'
 
 export async function generateMetadata({
@@ -12,9 +12,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'blogPage' })
+  const description = t('description')
+
   return {
     title: `${t('headline')} — Cognote`,
-    description: 'Study tips, feature guides, and updates from the Cognote team.',
+    description,
     alternates: {
       canonical: getLocalizedUrl(locale, '/blog'),
       languages: getLanguageAlternates('/blog'),
@@ -23,7 +25,7 @@ export async function generateMetadata({
       type: 'website',
       url: getLocalizedUrl(locale, '/blog'),
       title: `${t('headline')} — Cognote`,
-      description: 'Study tips, feature guides, and updates from the Cognote team.',
+      description,
       siteName: 'Cognote',
       images: [
         {
@@ -37,18 +39,23 @@ export async function generateMetadata({
     twitter: {
       card: 'summary_large_image',
       title: `${t('headline')} — Cognote`,
-      description: 'Study tips, feature guides, and updates from the Cognote team.',
+      description,
       images: ['/og-image.png'],
     },
   }
 }
 
-const sorted = [...posts].sort(
-  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-)
-
-function BlogList({ t }: { t: Awaited<ReturnType<typeof getTranslations>> }) {
+function BlogList({
+  locale,
+  t,
+}: {
+  locale: Locale
+  t: Awaited<ReturnType<typeof getTranslations>>
+}) {
   const format = useFormatter()
+  const sorted = getAllPosts(locale).sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  )
 
   return (
     <div className="space-y-0">
@@ -115,7 +122,7 @@ export default async function BlogPage({
         </p>
         <h1 className="text-5xl font-bold text-white mb-16">{t('headline')}</h1>
 
-        <BlogList t={t} />
+        <BlogList locale={locale as Locale} t={t} />
       </div>
     </main>
   )

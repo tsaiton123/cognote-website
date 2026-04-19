@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { useFormatter } from 'next-intl'
-import { posts, getPost } from '@/lib/posts'
+import { posts, getPost, type Locale, type Post } from '@/lib/posts'
 import { routing } from '@/i18n/routing'
 import BlogPostingJsonLd from '@/components/BlogPostingJsonLd'
 import { getLanguageAlternates, getLocalizedUrl } from '@/lib/seo'
@@ -20,7 +20,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>
 }): Promise<Metadata> {
   const { locale, slug } = await params
-  const post = getPost(slug)
+  const post = getPost(locale as Locale, slug)
   if (!post) return {}
 
   const url = getLocalizedUrl(locale, `/blog/${slug}`)
@@ -100,7 +100,7 @@ function renderInline(text: string): string {
   return text.replace(/\*\*(.+?)\*\*/g, '<strong class="text-white font-semibold">$1</strong>')
 }
 
-function PostContent({ post }: { post: ReturnType<typeof getPost> & {} }) {
+function PostContent({ post }: { post: Post }) {
   const format = useFormatter()
 
   return (
@@ -119,14 +119,14 @@ export default async function PostPage({
   params: Promise<{ locale: string; slug: string }>
 }) {
   const { locale, slug } = await params
-  const post = getPost(slug)
+  const post = getPost(locale as Locale, slug)
   if (!post) notFound()
 
   const tNav = await getTranslations({ locale, namespace: 'nav' })
 
   return (
     <main className="bg-black text-white min-h-screen">
-      <BlogPostingJsonLd post={post} />
+      <BlogPostingJsonLd locale={locale as Locale} post={post} />
       <div className="max-w-2xl mx-auto px-6 py-24">
         <Link
           href="/blog"

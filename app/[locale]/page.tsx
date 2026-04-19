@@ -44,7 +44,11 @@ export default async function Home({
 
   return (
     <main className="bg-black text-white">
-      <JsonLd />
+      <JsonLd
+        locale={locale}
+        description={t('metadata.description')}
+        faqs={FAQS}
+      />
       <Hero />
 
       <div id="features" />

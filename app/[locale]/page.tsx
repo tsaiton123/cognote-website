@@ -7,6 +7,7 @@ import JsonLd from '@/components/JsonLd'
 import AppStoreButton from '@/components/AppStoreButton'
 import BlogSection from '@/components/BlogSection'
 import { getLanguageAlternates, getLocalizedUrl } from '@/lib/seo'
+import type { Locale } from '@/lib/posts'
 
 export async function generateMetadata({
   params,
@@ -96,7 +97,7 @@ export default async function Home({
       </section>
 
       {/* Blog */}
-      <BlogSection />
+      <BlogSection locale={locale as Locale} />
 
       {/* FAQ */}
       <section

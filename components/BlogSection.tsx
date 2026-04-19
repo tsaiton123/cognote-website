@@ -1,11 +1,10 @@
 import Link from 'next/link'
-import { useTranslations, useFormatter, useLocale } from 'next-intl'
-import { getLatestPosts } from '@/lib/posts'
+import { useTranslations, useFormatter } from 'next-intl'
+import { getLatestPosts, type Locale } from '@/lib/posts'
 
-export default function BlogSection() {
+export default function BlogSection({ locale }: { locale: Locale }) {
   const t = useTranslations('blog')
   const format = useFormatter()
-  const locale = useLocale() as 'en' | 'zh-TW'
   const posts = getLatestPosts(locale, 3)
 
   return (

@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/next'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
+import { getLanguageAlternates, getLocalizedUrl, BASE_URL } from '@/lib/seo'
 import Script from 'next/script'
 import '../globals.css'
 
@@ -11,8 +12,6 @@ const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
 })
-
-const BASE_URL = 'https://cognote-ai.com'
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
@@ -45,7 +44,7 @@ export async function generateMetadata({
     authors: [{ name: 'Cognote' }],
     openGraph: {
       type: 'website',
-      url: `${BASE_URL}/${locale}`,
+      url: getLocalizedUrl(locale),
       siteName: 'Cognote',
       title: t('title'),
       description: t('description'),
@@ -65,10 +64,8 @@ export async function generateMetadata({
       images: ['/og-image.png'],
     },
     alternates: {
-      canonical: `${BASE_URL}/${locale}`,
-      languages: Object.fromEntries(
-        routing.locales.map((l) => [l, `${BASE_URL}/${l}`])
-      ),
+      canonical: getLocalizedUrl(locale),
+      languages: getLanguageAlternates(),
     },
     robots: {
       index: true,

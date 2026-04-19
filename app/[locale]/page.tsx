@@ -6,6 +6,7 @@ import FeatureSection from '@/components/FeatureSection'
 import JsonLd from '@/components/JsonLd'
 import AppStoreButton from '@/components/AppStoreButton'
 import BlogSection from '@/components/BlogSection'
+import { getLanguageAlternates, getLocalizedUrl } from '@/lib/seo'
 
 export async function generateMetadata({
   params,
@@ -16,7 +17,10 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'metadata' })
   return {
     title: t('title'),
-    alternates: { canonical: `https://cognote-ai.com/${locale}` },
+    alternates: {
+      canonical: getLocalizedUrl(locale),
+      languages: getLanguageAlternates(),
+    },
   }
 }
 

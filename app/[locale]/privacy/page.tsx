@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
+import { getLanguageAlternates, getLocalizedUrl } from '@/lib/seo'
 
 export async function generateMetadata({
   params,
@@ -11,7 +12,10 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'privacy' })
   return {
     title: t('headline'),
-    alternates: { canonical: `https://cognote-ai.com/${locale}/privacy` },
+    alternates: {
+      canonical: getLocalizedUrl(locale, '/privacy'),
+      languages: getLanguageAlternates('/privacy'),
+    },
   }
 }
 

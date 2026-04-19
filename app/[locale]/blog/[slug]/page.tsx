@@ -5,6 +5,8 @@ import { getTranslations } from 'next-intl/server'
 import { useFormatter } from 'next-intl'
 import { posts, getPost } from '@/lib/posts'
 import { routing } from '@/i18n/routing'
+import BlogPostingJsonLd from '@/components/BlogPostingJsonLd'
+import { getLanguageAlternates, getLocalizedUrl } from '@/lib/seo'
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -17,12 +19,41 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: string; slug: string }>
 }): Promise<Metadata> {
-  const { slug } = await params
+  const { locale, slug } = await params
   const post = getPost(slug)
   if (!post) return {}
+
+  const url = getLocalizedUrl(locale, `/blog/${slug}`)
+
   return {
     title: `${post.title} | Cognote`,
     description: post.excerpt,
+    alternates: {
+      canonical: url,
+      languages: getLanguageAlternates(`/blog/${slug}`),
+    },
+    openGraph: {
+      type: 'article',
+      url,
+      title: post.title,
+      description: post.excerpt,
+      siteName: 'Cognote',
+      publishedTime: post.date,
+      images: [
+        {
+          url: '/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: ['/og-image.png'],
+    },
   }
 }
 
@@ -95,6 +126,7 @@ export default async function PostPage({
 
   return (
     <main className="bg-black text-white min-h-screen">
+      <BlogPostingJsonLd post={post} />
       <div className="max-w-2xl mx-auto px-6 py-24">
         <Link
           href="/blog"

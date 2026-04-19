@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { useFormatter } from 'next-intl'
 import { posts } from '@/lib/posts'
+import { getLanguageAlternates, getLocalizedUrl } from '@/lib/seo'
 
 export async function generateMetadata({
   params,
@@ -14,6 +15,31 @@ export async function generateMetadata({
   return {
     title: `${t('headline')} — Cognote`,
     description: 'Study tips, feature guides, and updates from the Cognote team.',
+    alternates: {
+      canonical: getLocalizedUrl(locale, '/blog'),
+      languages: getLanguageAlternates('/blog'),
+    },
+    openGraph: {
+      type: 'website',
+      url: getLocalizedUrl(locale, '/blog'),
+      title: `${t('headline')} — Cognote`,
+      description: 'Study tips, feature guides, and updates from the Cognote team.',
+      siteName: 'Cognote',
+      images: [
+        {
+          url: '/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: 'Cognote blog',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${t('headline')} — Cognote`,
+      description: 'Study tips, feature guides, and updates from the Cognote team.',
+      images: ['/og-image.png'],
+    },
   }
 }
 

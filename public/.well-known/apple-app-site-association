@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["4H38Q8RQV5.com.cognote.subscription.basic.v2"],
+        "components": [
+          {
+            "/": "/r/*",
+            "comment": "Cognote referral links"
+          }
+        ]
+      }
+    ]
+  }
+}
